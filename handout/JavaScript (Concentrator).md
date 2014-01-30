@@ -1,6 +1,6 @@
 # Assignment Two: JavaScript
 ## Due: February 20, 2013 @ 11:59pm
-In this assignment, you'll catch a fever: Bieber fever. You will be implementing the BieberFeed, a tool for displaying a streaming list of Tweets posted about Justin Bieber.
+Smiley Cyrus has been in the news a lot lately. In this assignment, you will be implementing the MileyFeed, a tool for displaying a streaming list of Tweets posted about Miley Cyrus.
 
 **Important Note**: this project uses Ajax that violates [the same-origin policy][sop], and as such, it requires a web browser that supports XMLHttpRequest 2 and [CORS][cors]. This means you **must** be using [a semi-recent web browser][caniuse]: Firefox 4+, Chrome 7+, Safari 5+, or IE 10+.
 
@@ -9,10 +9,10 @@ In this assignment, you'll catch a fever: Bieber fever. You will be implementing
   [caniuse]: http://caniuse.com/xhr2
 
 ## The Problem
-Every second, there are nearly 50 new Tweets published about Justin Bieber. It can be quite harrowing to keep track of all of them on Twitter itself, so you are being tasked with finding a way to separate the proverbial wheat from the chaff.
+Every second, there are nearly 50 new Tweets published about Miley Cyrus. It can be quite harrowing to keep track of all of them on Twitter itself, so you are being tasked with finding a way to separate the proverbial wheat from the chaff.
 
 ## Requirements
-We have provided a web server that will provide you with the 25 most recent Tweets about Justin Bieber every time you ask for them. You will build a website that takes those Tweets and presents them to the user in some kind of a streaming list.
+We have provided a web server that will provide you with the 25 most recent Tweets about Miley Cyrus every time you ask for them. You will build a website that takes those Tweets and presents them to the user in some kind of a streaming list.
 
 You will be responsible for periodically querying the server for new Tweets, and using the DOM to append them to a new part of the page. You will also be responsible for filtering out duplicates, as some Tweets may overlap with the last time you requested them.
 
@@ -21,18 +21,18 @@ Create a new directory to hold your project's files, and then run:
 
     cs132_install javascript
 
-You can also download the assignment from GitHub: [https://github.com/brown-cs132-s13/javascript/archive/master.zip](https://github.com/brown-cs132-s13/javascript/archive/master.zip).
+You can also download the assignment from GitHub: [https://github.com/jbowens/cs132-javascript](https://github.com/jbowens/cs132-javascript).
 
-This will give you a blank `README.md` file (to contain known bugs and any features you want to highlight), a very barebones shell of an HTML file, and a picture of Justin Bieber's face that you may use and modify as you see fit in the design of your project. There is also a "no photo" placeholder image you might want to use for Tweets that don't have pictures associated with them.
+This will give you a blank `README.md` file (to contain known bugs and any features you want to highlight), a very barebones shell of an HTML file, and a picture of Miley Cyrus's face that you may use and modify as you see fit in the design of your project. There is also a "no photo" placeholder image you might want to use for Tweets that don't have pictures associated with them.
 
-You should implement all of your HTML in `bieber.html`, and all of your JavaScript in `bieber.js`.
+You should implement all of your HTML in `miley.html`, and all of your JavaScript in `miley.js`.
 
-## The BieberFeed Server
-You will be interacting with a server we've provided that will give you Bieber-related Tweets. The server is located at `http://bieber.mattpatenaude.com` and responds to the following requests:
+## The MileyFeed Server
+You will be interacting with a server we've provided that will give you Miley-related Tweets. The server is located at `http://miley.hmtdyl.com` and responds to the following requests:
 
     /feed/:login
 
-Make a `GET` request to `/feed/<your CS username>` to obtain a new block of 25 Bieber-related Tweets. The response will be returned as a [JSON][json] array. Take note that some of these Tweets may be duplicates of Tweets that you've already seen, and it is **your responsibility** to filter those out. Every Tweet has a unique `id` field that you can use for this purpose.
+Make a `GET` request to `/feed/<your CS username>` to obtain a new block of 25 Miley-related Tweets. The response will be returned as a [JSON][json] array. Take note that some of these Tweets may be duplicates of Tweets that you've already seen, and it is **your responsibility** to filter those out. Every Tweet has a unique `id` field that you can use for this purpose.
 
   [json]: http://en.wikipedia.org/wiki/JSON
 
@@ -48,11 +48,11 @@ Make a `GET` request to `/feed/stats/<your CS username>` to obtain statistical i
     {  
       "count" : 24,  // number of tweets  
       "last" : "", // id of the last tweet  
-      "terms" : [ "bieber" , "justin bieber", "@justinbieber" ] // the search terms used to query the Twitter streaming API  
+      "terms" : [ "miley" , "miley cyrus", "@mileycyrus" ] // the search terms used to query the Twitter streaming API  
     }
 
 ## Using Ajax
-Since the idea of the BieberFeed is that it's a live stream of Bieber-oriented Tweets, having the page refresh every second with new content would be a bit annoying. For that reason, we'll be using a technique called [Ajax][ajax], which historically stands for Asynchronous JavaScript and XML, but actually applies to any kind of data (text, [JSON][json], and more).
+Since the idea of the MileyFeed is that it's a live stream of Miley-oriented Tweets, having the page refresh every second with new content would be a bit annoying. For that reason, we'll be using a technique called [Ajax][ajax], which historically stands for Asynchronous JavaScript and XML, but actually applies to any kind of data (text, [JSON][json], and more).
 
   [ajax]: http://en.wikipedia.org/wiki/Ajax_(programming)
 
@@ -97,7 +97,7 @@ In order to prevent a particularly malicious class of attacks known as [cross-si
 
 By default, Ajax requests to websites on different origins are **forbidden** by web browsers. The reason for this is that I could, for instance, make an Ajax request from my website at `evilsite.com` to `facebook.com`, and the browser would send along all of your saved cookies for Facebook, meaning I would have unrestricted access to your (fully logged in!) Facebook session. I could somewhat trivially construct a website that, just by virtue of visiting it, would "like" my company's page on Facebook (or something much more malicious). Thus, the same-origin policy is a "Good Thing".
 
-However, there are times when the same-origin policy makes it very inconvenient to do legitimate things -- like on this project. To that end, a new standard called [CORS][cors] has evolved. By adding a few headers to our responses from the BieberFeed server:
+However, there are times when the same-origin policy makes it very inconvenient to do legitimate things -- like on this project. To that end, a new standard called [CORS][cors] has evolved. By adding a few headers to our responses from the MileyFeed server:
 
     Access-Control-Allow-Origin: *
     Access-Control-Allow-Methods: GET, POST, OPTIONS
@@ -106,7 +106,7 @@ However, there are times when the same-origin policy makes it very inconvenient 
 ... we are able to inform the browser that "yes, this website will allow other websites to make requests to it." In particular, `Access-Control-Allow-Origin: *` says that our server will respond to requests from *any* origin. In practice, you would want to place a list of domain names here that your website is explicitly allowing requests from (for example, Facebook might not want to allow `evilsite.com` to make Ajax requests to it, but it might allow `instagram.com` to do it).
 
 ## Parsing JSON
-The responses from the BieberFeed server will come back as [JSON][json], which is a data storage format based on the object-literal notation in JavaScript. JSON objects are actually valid JavaScript code, but because that leaves the door wide open for nasty things, you don't want to just dump it in an `eval(...)`. Parsing JSON safely is fairly straightforward:
+The responses from the MileyFeed server will come back as [JSON][json], which is a data storage format based on the object-literal notation in JavaScript. JSON objects are actually valid JavaScript code, but because that leaves the door wide open for nasty things, you don't want to just dump it in an `eval(...)`. Parsing JSON safely is fairly straightforward:
 
     // inside your Ajax response handler
     var content = request.responseText;
@@ -132,9 +132,9 @@ You might want to use `element.insertBefore(...)` instead of `element.appendChil
   [mdn-dom]: https://developer.mozilla.org/en-US/docs/DOM/element
 
 ## Other Niceties
-Think about how your choice of mechanisms will affect the user experience of the BieberFeed. Do new Tweets appear at the top, or the bottom? Does the page keep growing in length, or do you start removing old Tweets after a certain point? Do Tweets appear several at a time, or spaced out? Can the user start and stop the feed (hint: look up `clearInterval(...)`)? Is the list of Tweets independently scrollable (hint: lookup `overflow-y: auto`), or does the entire page scroll with it?
+Think about how your choice of mechanisms will affect the user experience of the MileyFeed. Do new Tweets appear at the top, or the bottom? Does the page keep growing in length, or do you start removing old Tweets after a certain point? Do Tweets appear several at a time, or spaced out? Can the user start and stop the feed (hint: look up `clearInterval(...)`)? Is the list of Tweets independently scrollable (hint: lookup `overflow-y: auto`), or does the entire page scroll with it?
 
-Add any features you can to try to make the experience of looking at so many Bieber Tweets bearable.
+Add any features you can to try to make the experience of looking at so many Miley Tweets bearable.
 
 ## Handing In
 Before handing in your project, make sure you've checked to make sure you've filled in your `README.md` file (you can use any format you like for your README, but [Markdown][markdown] is highly recommended).
