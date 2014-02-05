@@ -38,7 +38,7 @@ To get started, you have to link the TA library into your HTML page. Open up `mi
 
 ... and right below that:
 
-    <script type="text/javascript">Feeder.init('miley.hmtdyl.com')</script>
+    <script type="text/javascript">Feeder.init('miley.djroomba.com')</script>
 
 ... to initialize the events. The domain in `Feeder.init` may change (we'll send updates).
 

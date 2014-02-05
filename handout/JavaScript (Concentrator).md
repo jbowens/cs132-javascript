@@ -28,7 +28,7 @@ This will give you a blank `README.md` file (to contain known bugs and any featu
 You should implement all of your HTML in `miley.html`, and all of your JavaScript in `miley.js`.
 
 ## The MileyFeed Server
-You will be interacting with a server we've provided that will give you Miley-related Tweets. The server is located at `http://miley.hmtdyl.com` and responds to the following requests:
+You will be interacting with a server we've provided that will give you Miley-related Tweets. The server is located at `http://miley.djroomba.com` and responds to the following requests:
 
     /feed/:login
 
